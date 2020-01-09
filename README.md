@@ -21,8 +21,12 @@ Solución CRUD que utiliza la librería fullCalendar (JavaScript) para registrar
 <td>2</td>
   <td align="center">Abrir la solución <b>prosegur_calendar.sln</b> dentro de la carpeta prosegur_calendar</td>
 </tr>
-<tr>
+  <tr>
 <td>3</td>
+    <td align="left">Cambiar la cadena de conexión en el archivo WEB.CONFIG en la etiqueta <b><connectionStrings></b></td>
+</tr>
+<tr>
+<td>4</td>
 <td align="left">Ctrl+F5</td>
 </tr>
 <tr>
