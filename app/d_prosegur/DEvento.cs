@@ -1,9 +1,11 @@
 ﻿using e_prosegur;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace d_prosegur
 {
@@ -114,8 +116,7 @@ namespace d_prosegur
             try
             {
                 SqlConnection cn = new SqlConnection();
-                //cn.ConnectionString = ConfigurationManager.ConnectionStrings["bbdd_prosegur"].ToString();
-                cn.ConnectionString = "data source=localhost;initial catalog=prosegur;user id=sa;password=P@ssw0rd;MultipleActiveResultSets=True;App=EntityFramework";
+                cn.ConnectionString = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json", true, reloadOnChange: true).Build().GetSection("ConnectionStrings").GetSection("prosegur").Value;
                 return cn;
             }
             catch (Exception ex) { throw ex; }
