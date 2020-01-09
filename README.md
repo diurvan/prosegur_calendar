@@ -23,7 +23,7 @@ Solución CRUD que utiliza la librería fullCalendar (JavaScript) para registrar
 </tr>
 <tr>
 <td>3</td>
-<td align="center">Ctrl+F5</td>
+<td align="left">Ctrl+F5</td>
 </tr>
 <tr>
 </tbody>
