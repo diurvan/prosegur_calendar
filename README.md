@@ -23,7 +23,7 @@ Solución CRUD que utiliza la librería fullCalendar (JavaScript) para registrar
 </tr>
   <tr>
 <td>3</td>
-    <td align="left">Cambiar la cadena de conexión en el archivo WEB.CONFIG <br/>en la etiqueta <b><connectionStrings></b></td>
+    <td align="left">Cambiar la cadena de conexión en el archivo WEB.CONFIG <br/>en la etiqueta <b>connectionStrings</b></td>
 </tr>
 <tr>
 <td>4</td>
