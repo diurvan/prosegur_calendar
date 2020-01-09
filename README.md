@@ -19,16 +19,20 @@ Solución CRUD que utiliza la librería fullCalendar (JavaScript) para registrar
 </tr>
 <tr>
 <td>2</td>
-  <td align="center">Abrir la solución <b>prosegur_calendar.sln</b> dentro de la carpeta prosegur_calendar</td>
+  <td align="center">Para depurar, abrir la solución <b>\prosegur_calendar\prosegur_calendar.sln</b> dentro de la carpeta app</td>
 </tr>
   <tr>
 <td>3</td>
-    <td align="left">Cambiar la cadena de conexión en el archivo WEB.CONFIG <br/>en la etiqueta <b>connectionStrings</b></td>
+    <td align="left">Cambiar la cadena de conexión en el archivo \prosegur_calendar\appsettings.json</td>
 </tr>
 <tr>
 <td>4</td>
 <td align="left">Ctrl+F5</td>
 </tr>
 <tr>
+  <tr>
+<td>2</td>
+  <td align="center">Para integrar en Docker, ejecutar el copiado de archivos vía makefile, build y seguidamente el release (para la compilación y generación de compilados)</td>
+</tr>
 </tbody>
 </table>
