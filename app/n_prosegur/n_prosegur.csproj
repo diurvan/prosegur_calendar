@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\d_prosegur\d_prosegur.csproj" />
+    <ProjectReference Include="..\e_prosegur\e_prosegur.csproj" />
+  </ItemGroup>
+
+</Project>

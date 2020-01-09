@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "prosegur_calendar", "prosegur_calendar.csproj", "{C218EE08-A8EA-441C-AFF0-15781145C082}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "e_prosegur", "..\e_prosegur\e_prosegur.csproj", "{E6318CD4-FD2A-43FD-A42E-FD47223DA96B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "n_prosegur", "..\n_prosegur\n_prosegur.csproj", "{A124300E-53BB-45DC-A717-D6764389F63E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "d_prosegur", "..\d_prosegur\d_prosegur.csproj", "{A95ACF2B-8DAA-4706-8612-1701AD5D6DB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "prosegur_calendar.Tests", "..\prosegur_calendar.Tests\prosegur_calendar.Tests.csproj", "{50554816-4D7B-4561-9573-48F5AC386085}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C218EE08-A8EA-441C-AFF0-15781145C082}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C218EE08-A8EA-441C-AFF0-15781145C082}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C218EE08-A8EA-441C-AFF0-15781145C082}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C218EE08-A8EA-441C-AFF0-15781145C082}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6318CD4-FD2A-43FD-A42E-FD47223DA96B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6318CD4-FD2A-43FD-A42E-FD47223DA96B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6318CD4-FD2A-43FD-A42E-FD47223DA96B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6318CD4-FD2A-43FD-A42E-FD47223DA96B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A124300E-53BB-45DC-A717-D6764389F63E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A124300E-53BB-45DC-A717-D6764389F63E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A124300E-53BB-45DC-A717-D6764389F63E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A124300E-53BB-45DC-A717-D6764389F63E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A95ACF2B-8DAA-4706-8612-1701AD5D6DB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A95ACF2B-8DAA-4706-8612-1701AD5D6DB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A95ACF2B-8DAA-4706-8612-1701AD5D6DB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A95ACF2B-8DAA-4706-8612-1701AD5D6DB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50554816-4D7B-4561-9573-48F5AC386085}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50554816-4D7B-4561-9573-48F5AC386085}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50554816-4D7B-4561-9573-48F5AC386085}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50554816-4D7B-4561-9573-48F5AC386085}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {55740420-1919-43D6-A5EC-B0F0D54243E5}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,45 @@
+﻿<h2>Login de Usuario</h2>
+
+<div class="container">
+    <section id="loginForm">
+        <form id="FormData" name="FormData">
+            <div class="form-group">
+                <label for="ruc">Correo</label>
+                <input type="text" name="Correo" class="form-control" id="Correo" placeholder="Ingrese su nombre de usuario">
+            </div>
+            <input class="btn btn-lg btn-primary btn-block" type="button" value="INGRESAR" onclick="logearse()" />
+        </form>
+    </section>
+</div>
+
+<script>
+    function logearse() {
+        var formData = new FormData();
+        formData.append("Correo", $('#Correo').val());
+
+        $.ajax({
+            type: 'post',
+            url: '/Login/Login',
+            data: formData,
+            dataType: 'json',
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                if (response.data.length > 0) {
+                    var content = '<li>';
+                    $.each(response.data, function (index, value) {
+                        content += '<ul>' + value + '</ul>';
+                    });
+                    content += '</li>';
+                    alert(content);
+                }
+                else {
+                    window.location.href = "/Home/Index/";
+                }
+            },
+            error: function (error) {
+                alert("Login con errores");
+            }
+        });
+    }
+</script>
