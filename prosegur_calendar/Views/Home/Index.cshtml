@@ -1,0 +1,202 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!-- template from http://getbootstrap.com/getting-started -->
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prosegur-Calendar</title>
+
+    <!-- CSS Includes -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.print.css" media='print'>
+
+    <style type="text/css">
+        .field-validation-error {
+            color: #ff0000;
+        }
+
+        .fc-event {
+            background: #ffffff !important;
+            color: #000000 !important;
+        }
+
+        .fc-widget-content {
+            border: 1px solid #000000;
+        }
+
+        .fc-event-bg {
+            display: none !important;
+        }
+
+        .fc-event .ui-resizable-handle {
+            display: none !important;
+        }
+
+        .fc-header {
+            display: none;
+            vertical-align: top;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" style="color:white;">
+        Prosegur - Calendar - @Session["correo"]
+        <div class="container clearfix">
+            <div id="et-info">
+                <button type="button" id="btnGrabar" value="Logout" class="btn btn-primary" onclick="Logout()">Logout</button>
+            </div>
+        </div>
+    </div>
+    <br /><br /><br /><br /><br />
+    <div class="container body-content">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "FormData", name = "FormData" }))
+        {<div class="form-group">
+                <div class="col-md-6">
+                    <div id='calendar'></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="buscarSociedad">Día Seleccionado</label>
+                            <input type="text" id="txtDia" class="form-control" disabled="disabled" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label for="buscarSociedad">Nombres</label>
+                            <input type="text" id="txtNombre" class="form-control" />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="buscarSociedad">Calificación</label>
+                            <input type="number" id="txtEvaluacion" class="form-control" step="1" max="10" min="1" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="button" id="btnGrabar" value="Grabar" class="btn btn-primary" onclick="onClickGrabar()">Grabar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- JS includes -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.js"></script>
+
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+        cargarcalendario();
+        });
+
+    function cargarcalendario() {
+        $('#calendar').fullCalendar({
+            customButtons: {
+                myCustomButton: {
+                  text: 'Imprimir',
+                  click: function() {
+                    window.print();
+                  }
+                }
+              },
+
+        	header: {
+            	left: 'prev,next today myCustomButton',
+            	center: 'title',
+            	right: 'year,month,agendaWeek,agendaDay'
+			},
+            firstDay: 1,
+            slotMinutes: 60,
+            selectable: true,
+            events: '@Url.RouteUrl(new{ action="GetEvents", controller="Home"})',
+            eventRender: function (event, element) {
+                element[0].text = 'EVA:' + event.evaluacion;
+            },
+            select: function (start, end, allDay, jsEvent, view, resource) {
+                var inicio = moment.utc(start, 'YYYY-MM-DD HH:mm:ss').format('DD-MM-YYYY');
+                //var fin = moment.utc(end, 'YYYY-MM-DD HH:mm:ss').format('DD-MM-YYYY');
+                $('#txtDia').val(inicio);
+                $('#txtNombre').val('');
+                $('#txtEvaluacion').val('');
+			},
+        });
+    }
+
+    function onClickGrabar() {
+        if (0 >= parseInt($('#txtEvaluacion').val()) || parseInt($('#txtEvaluacion').val()) >= 11) {
+            alert("Evaluación debe ser ser entre 1 y 10"); return;
+        }
+
+        var formData = new FormData();
+        formData.append("Fecha", $('#txtDia').val());
+        formData.append("Nombre", $('#txtNombre').val());
+        formData.append("Evaluacion", $('#txtEvaluacion').val());
+
+        $.ajax({
+            type: 'post',
+            url: '/Home/GrabarEvento',
+            data: formData,
+            dataType: 'json',
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                if (response.Data.length > 0) {
+                    var content = '<li>';
+                    $.each(response.Data, function( index, value ) {
+                        content+='<ul>'+value+'</ul>';
+                    });
+                    content += '</li>';
+                    alert(content);
+                }
+                else {
+                    alert("Registro exitoso");
+                }
+            },
+            error: function (error) {
+                alert("Registro con errores");
+            },
+            complete: function (response) {
+                $("#calendar").fullCalendar("refetchEvents");
+            }
+        });
+    }
+
+    function Logout() {
+        debugger;
+        $.ajax({
+            type: 'post',
+            url: '/Login/Logout',
+            dataType: 'json',
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                debugger;
+                    window.location.href = "/Login/Index/";
+            },
+            error: function (response) {
+                debugger;
+            },
+            complete: function (response) {
+                debugger;
+                window.location.href = "/Login/Index/";
+            }
+        });
+    }
+    </script>
+</body>
+</html>
